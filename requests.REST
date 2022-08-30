@@ -1,0 +1,88 @@
+# Cadastro
+POST http://localhost:3003/signup
+Content-Type: application/json
+
+{
+    "name": "mike",
+    "email": "mike@gmail.com",
+    "password": "123456"
+}
+
+###
+# login do usuário
+# @name login
+POST http://localhost:3003/login
+Content-Type: application/json
+
+{
+    "email": "mike@gmail.com",
+    "password": "123456"
+}
+
+###
+
+# Criar post
+@token = {{login.response.body.token}}
+POST http://localhost:3003/post
+Content-Type: application/json
+Authorization: {asdasdasd
+
+{
+    "image": "",
+    "description": "Hoje esta muito calor",
+    "created_at": "",
+    "type": "NORMAL"
+}
+
+
+###
+# Pegar post
+GET http://localhost:3003/post/3ae5c8ed-c85e-4c3b-a4c7-07033756a49e
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+# Fazer amizade
+POST http://localhost:3003/friendship/ddae8def-14b7-4131-a34b-dabd60052137
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+# Desfazer amizade
+POST http://localhost:3003/friendship/undo/ddae8def-14b7-4131-a34b-dabd60052137
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+# Pegar Feed
+GET http://localhost:3003/feed?page=1
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+# Pegar lista de posts por tipo
+GET http://localhost:3003/post?type=normal
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+# Curtir um Post
+POST http://localhost:3003/post/146eff70-ddc8-4e8a-b73a-0593fb7ca51b/like
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+# "Descurtir" um Post
+PUT http://localhost:3003/post/146eff70-ddc8-4e8a-b73a-0593fb7ca51b/dislike
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+
+POST http://localhost:3003/post/bf1bebcc-8055-4ec1-9522-273f71dab326/comment
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "comment": " bla bla"
+}
